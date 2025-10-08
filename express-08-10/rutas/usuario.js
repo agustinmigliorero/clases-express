@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const {
+  verUsuarios,
+  registroUsuarios,
+} = require("../controladores/usuario.js");
 
-router.get("/", function (req, res) {
-  res.send("ESTA ES LA TABLA DE LOS USUARIOS!");
-});
-
-router.get("/registro", function (req, res) {
-  res.send("ESTE ES EL FORMULARIO DE REGISTRO!");
-});
+router.get("/", verUsuarios);
+router.get("/registro", registroUsuarios);
 
 module.exports = router;
