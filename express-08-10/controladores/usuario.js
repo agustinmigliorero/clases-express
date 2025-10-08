@@ -6,4 +6,9 @@ function registroUsuarios(req, res) {
   res.send("ESTE ES EL FORMULARIO DE REGISTRO!");
 }
 
-module.exports = { verUsuarios, registroUsuarios };
+function verUsuario(req, res) {
+  const nombre = req.params.nombre;
+  res.send("Hola!, " + nombre);
+}
+
+module.exports = { verUsuarios, registroUsuarios, verUsuario };
