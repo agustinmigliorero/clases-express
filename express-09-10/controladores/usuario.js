@@ -1,14 +1,25 @@
 const Usuario = require("../modelos/usuario.js");
 
-function verUsuarios(req, res) {
-  res.send("ESTA ES LA TABLA DE VER USUARIOS");
+async function verUsuarios(req, res) {
+  const usuarios = await Usuario.find();
+
+  let filas = "";
+
+  for (let i = 0; i < usuarios.length; i++) {
+    filas += `<li>${usuarios[i].nombre} ${usuarios[i].apellido}</li>`;
+  }
+
+  res.send(`
+    <h1>Usuarios!</h1>
+    <ul>${filas}</ul>
+    `);
 }
 
 function registroUsuarios(req, res) {
   const usuarioNuevo = new Usuario({
-    nombre: "Martin",
-    apellido: "Yannibelli",
-    edad: 48,
+    nombre: "Claudia",
+    apellido: "Rodriguez",
+    edad: 20,
   });
 
   usuarioNuevo.save();
