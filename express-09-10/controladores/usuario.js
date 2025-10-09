@@ -1,9 +1,21 @@
+const Usuario = require("../modelos/usuario.js");
+
 function verUsuarios(req, res) {
   res.send("ESTA ES LA TABLA DE VER USUARIOS");
 }
 
 function registroUsuarios(req, res) {
-  res.send("ESTE ES EL FORMULARIO DE REGISTRO!");
+  const usuarioNuevo = new Usuario({
+    nombre: "Martin",
+    apellido: "Yannibelli",
+    edad: 48,
+  });
+
+  usuarioNuevo.save();
+
+  res.send(
+    `Registraste el usuario: ${usuarioNuevo.nombre} ${usuarioNuevo.apellido} ${usuarioNuevo.edad} `
+  );
 }
 
 function verUsuario(req, res) {
