@@ -1,0 +1,33 @@
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    padding: 10px;
+  }
+</style>
+
+<h1>Usuarios!!!</h1>
+
+<h2>Estoy probando el EJS</h2>
+
+<table>
+  <thead>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Edad</th>
+  </thead>
+  <tbody>
+    <% usuarios.forEach(usuario => { %>
+    <tr>
+      <td><%= usuario.nombre %></td>
+      <td><%= usuario.email %></td>
+      <td><%= usuario.edad %></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

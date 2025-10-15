@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const app = express();
 const port = 3000;
 
+app.set("view engine", "ejs");
+
 mongoose.connect("mongodb://127.0.0.1:27017/db-15-10-2025");
 const db = mongoose.connection;
 
@@ -14,7 +16,7 @@ db.once("open", () => {
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.render("index");
 });
 
 const rutasUsuario = require("./rutas/rutasUsuario");
