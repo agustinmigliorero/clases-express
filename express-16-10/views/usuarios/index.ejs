@@ -1,0 +1,48 @@
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    padding: 10px;
+  }
+</style>
+
+<h1>Usuarios!!!</h1>
+
+<h2>Estoy probando el EJS</h2>
+
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Edad</th>
+    <th>Acciones</th>
+  </thead>
+  <tbody>
+    <% usuarios.forEach(usuario => { %>
+    <tr>
+      <td><%= usuario._id %></td>
+      <td><%= usuario.nombre %></td>
+      <td><%= usuario.email %></td>
+      <td><%= usuario.edad %></td>
+      <td>
+        <a href="http://localhost:3000/usuarios/editar/<%= usuario._id %>"
+          ><button>Editar</button></a
+        >
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<!-- 
+    Create X
+    Read X
+    Update
+    Delete
+-->

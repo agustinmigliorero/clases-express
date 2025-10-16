@@ -1,0 +1,59 @@
+<div>
+  <input id="input-id" type="hidden" value="<%= id %>" />
+  <div>
+    <input
+      value="<%= usuario.nombre %>"
+      type="text"
+      id="nombre"
+      name="nombre"
+      placeholder="Nombre"
+    />
+  </div>
+  <div>
+    <input
+      value="<%= usuario.email %>"
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Email"
+    />
+  </div>
+  <div>
+    <input
+      value="<%= usuario.edad %>"
+      type="number"
+      id="edad"
+      name="edad"
+      placeholder="Edad"
+    />
+  </div>
+  <button type="submit">Editar</button>
+</div>
+
+<script>
+  const inputId = document.querySelector("#input-id");
+  const nombre = document.getElementById("nombre");
+  const email = document.getElementById("email");
+  const edad = document.getElementById("edad");
+  const button = document.querySelector("button");
+
+  button.addEventListener("click", async () => {
+    const id = inputId.value;
+    const usuario = {
+      nombre: nombre.value,
+      email: email.value,
+      edad: edad.value,
+    };
+
+    const res = await fetch(`/usuarios/editar/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+
+    const data = await res.json();
+    window.location.href = "http://localhost:3000/usuarios";
+  });
+</script>
