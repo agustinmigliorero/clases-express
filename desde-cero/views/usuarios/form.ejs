@@ -1,0 +1,29 @@
+<h1>Crear usuario!</h1>
+
+<div>
+  <input type="text" placeholder="Nombre" id="nombre" />
+  <input type="email" placeholder="Email" id="email" />
+  <input type="number" placeholder="Edad" id="edad" />
+  <button id="btnCrear">Crear</button>
+</div>
+
+<script>
+  const inputNombre = document.querySelector("#nombre");
+  const inputEmail = document.querySelector("#email");
+  const inputEdad = document.querySelector("#edad");
+  const btnCrear = document.querySelector("#btnCrear");
+
+  btnCrear.addEventListener("click", async function () {
+    const respuesta = await fetch("http://localhost:3000/usuarios", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nombre: inputNombre.value,
+        email: inputEmail.value,
+        edad: inputEdad.value,
+      }),
+    });
+
+    window.location.href = "http://localhost:3000/usuarios";
+  });
+</script>

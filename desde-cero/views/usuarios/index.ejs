@@ -1,0 +1,9 @@
+<h1>Usuarios!</h1>
+
+<ul>
+  <% usuarios.forEach(usuario => { %>
+  <li>
+    <%= usuario.nombre %> - <%= usuario.email %> - <%= usuario.edad %> años
+  </li>
+  <% }) %>
+</ul>
