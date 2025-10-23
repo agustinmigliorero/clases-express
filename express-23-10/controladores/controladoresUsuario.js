@@ -33,9 +33,21 @@ async function actualizarUsuario(req, res) {
   res.json(usuarioActualizado);
 }
 
+//Controlador de ver un solo usuario por ID
+
+async function verUsuarioPorId(req, res) {
+  const { id } = req.params;
+  const usuario = await Usuario.findById(id);
+  if (!usuario) {
+    return res.status(404).json({ mensaje: "Usuario no encontrado" });
+  }
+  res.json(usuario);
+}
+
 module.exports = {
   verUsuarios,
   crearUsuario,
   eliminarUsuario,
   actualizarUsuario,
+  verUsuarioPorId,
 };
