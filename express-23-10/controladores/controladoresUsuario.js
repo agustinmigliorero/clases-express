@@ -12,7 +12,30 @@ async function crearUsuario(req, res) {
   res.status(201).json(nuevoUsuario);
 }
 
+async function eliminarUsuario(req, res) {
+  const { id } = req.params;
+  const usuarioEliminado = await Usuario.findByIdAndDelete(id);
+  res.status(204).json(usuarioEliminado);
+}
+
+async function actualizarUsuario(req, res) {
+  const { id } = req.params;
+  const { nombre, apellido, email } = req.body;
+  const usuarioActualizado = await Usuario.findByIdAndUpdate(
+    id,
+    {
+      nombre,
+      apellido,
+      email,
+    },
+    { new: true }
+  );
+  res.json(usuarioActualizado);
+}
+
 module.exports = {
   verUsuarios,
   crearUsuario,
+  eliminarUsuario,
+  actualizarUsuario,
 };
