@@ -20,6 +20,9 @@ app.get("/", (req, res) => {
 const rutasUsuario = require("./rutas/rutasUsuario");
 app.use("/usuarios", rutasUsuario);
 
+const rutasPublicacion = require("./rutas/rutasPublicacion");
+app.use("/publicaciones", rutasPublicacion);
+
 app.listen(port, () => {
   console.log(`Servidor corriendo en: http://localhost:${port}`);
 });

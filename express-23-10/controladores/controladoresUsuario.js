@@ -37,7 +37,7 @@ async function actualizarUsuario(req, res) {
 
 async function verUsuarioPorId(req, res) {
   const { id } = req.params;
-  const usuario = await Usuario.findById(id);
+  const usuario = await Usuario.findById(id).populate("publicaciones");
   if (!usuario) {
     return res.status(404).json({ mensaje: "Usuario no encontrado" });
   }
