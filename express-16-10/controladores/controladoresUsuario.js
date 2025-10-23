@@ -19,7 +19,8 @@ async function verUsuarios(req, res) {
   try {
     const usuarios = await Usuario.find();
 
-    res.render("usuarios/index", { usuarios: usuarios });
+    // res.render("usuarios/index", { usuarios: usuarios });
+    res.json(usuarios);
   } catch (error) {
     res.status(500).send({ mensaje: "Error al obtener los usuarios", error });
   }
