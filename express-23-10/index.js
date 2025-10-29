@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const rutasUsuario = require("./rutas/rutasUsuario");
+const rutasPublicacion = require("./rutas/rutasPublicacion");
 const app = express();
 const port = 3000;
 
@@ -17,10 +19,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-const rutasUsuario = require("./rutas/rutasUsuario");
 app.use("/usuarios", rutasUsuario);
-
-const rutasPublicacion = require("./rutas/rutasPublicacion");
 app.use("/publicaciones", rutasPublicacion);
 
 app.listen(port, () => {
