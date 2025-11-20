@@ -10,9 +10,18 @@ async function Pagina() {
   const productos = await mostrarProductos();
 
   return (
-    <div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
       {productos.map((producto) => {
-        return <p>{producto.titulo}</p>;
+        return (
+          <CardProducto
+            key={producto.id}
+            titulo={producto.titulo}
+            contenido={producto.contenido}
+            descripcion={producto.descripcion}
+            pieDePagina={producto.precio}
+            urlImagen={producto.imagen}
+          />
+        );
       })}
     </div>
   );
