@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto } from "next/font/google";
+import { Geist, Geist_Mono, Roboto, Bungee } from "next/font/google";
 import "./globals.css";
 import Navbar from "../componentes/Navbar";
 
@@ -15,8 +15,14 @@ const geistMono = Geist_Mono({
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "700"], // podés elegir pesos
-  variable: "--font-roboto", // opcional, si querés usar una variable CSS
+  weight: ["300", "400", "500", "700"], // pesos disponibles: 100, 300, 400, 500, 700, 900
+  variable: "--font-roboto", // variable CSS para usar en Tailwind
+});
+
+const bungee = Bungee({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-bungee",
 });
 
 export const metadata: Metadata = {
@@ -31,8 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Navbar></Navbar>
-      <body className={roboto.variable}>{children}</body>
+      {/* <Navbar></Navbar> */}
+      <body className={` ${bungee.variable} ${roboto.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }

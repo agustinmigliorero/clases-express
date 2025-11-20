@@ -22,7 +22,7 @@ function CardProducto({
         <AspectRatio ratio={1 / 1}>
           <img src={urlImagen} alt={titulo} />
         </AspectRatio>
-        <CardTitle style={{ fontFamily: "cursive" }}>{titulo}</CardTitle>
+        <CardTitle>{titulo}</CardTitle>
         <CardDescription>{descripcion}</CardDescription>
         {/* <CardAction>Card Action</CardAction> */}
       </CardHeader>
@@ -30,7 +30,9 @@ function CardProducto({
         <p>{contenido}</p>
       </CardContent>
       <CardFooter>
-        <p>{pieDePagina}</p>
+        <p>
+          <b className="text-green-500">${pieDePagina}</b>
+        </p>
       </CardFooter>
     </Card>
   );
