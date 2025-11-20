@@ -1,7 +1,7 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
+import { Button } from "@/components/ui/button";
 
 import {
   Field,
@@ -21,28 +21,31 @@ import { useState } from "react";
 function Form() {
   return (
     <FieldSet>
-      <FieldLegend>Profile</FieldLegend>
-      <FieldDescription>This appears on invoices and emails.</FieldDescription>
+      <FieldLegend>Crear Producto</FieldLegend>
+      <FieldDescription>Esto es para crear un producto</FieldDescription>
       <FieldGroup>
         <Field>
-          <FieldLabel htmlFor="name">Full name</FieldLabel>
-          <Input id="name" autoComplete="off" placeholder="Evil Rabbit" />
-          <FieldDescription>
-            This appears on invoices and emails.
-          </FieldDescription>
+          <FieldLabel htmlFor="titulo">Titulo</FieldLabel>
+          <Input id="titulo" autoComplete="off" placeholder="Producto 1" />
         </Field>
         <Field>
-          <FieldLabel htmlFor="username">Username</FieldLabel>
-          <Input id="username" autoComplete="off" aria-invalid />
-          <FieldError>Choose another username.</FieldError>
+          <FieldLabel htmlFor="descripcion">Descripcion</FieldLabel>
+          <Input id="descripcion" autoComplete="off" />
         </Field>
-        <Field orientation="horizontal">
-          <Switch id="newsletter" />
-          <FieldLabel htmlFor="newsletter">
-            Subscribe to the newsletter
-          </FieldLabel>
+        <Field>
+          <FieldLabel htmlFor="contenido">Contenido</FieldLabel>
+          <Input id="contenido" autoComplete="off" />
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="precio">Precio</FieldLabel>
+          <Input id="precio" type="number" autoComplete="off" />
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="imagen">Imagen</FieldLabel>
+          <Input id="imagen" autoComplete="off" />
         </Field>
       </FieldGroup>
+      <Button variant="">Enviar</Button>
     </FieldSet>
   );
 }
