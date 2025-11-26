@@ -1,9 +1,5 @@
 "use client";
-
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { redirect } from "next/navigation";
-
+import { useState } from "react";
 import {
   Field,
   FieldContent,
@@ -17,7 +13,9 @@ import {
   FieldTitle,
 } from "@/components/ui/field";
 
-import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
 
 function Form() {
   const [titulo, setTitulo] = useState("");
@@ -26,7 +24,7 @@ function Form() {
   const [precio, setPrecio] = useState("");
   const [imagen, setImagen] = useState("");
 
-  async function handleSubmit(e) {
+  async function enviarFormulario(e) {
     e.preventDefault();
     const respuesta = await fetch("http://localhost:3000/api/productos", {
       method: "POST",
@@ -39,6 +37,7 @@ function Form() {
         imagen,
       }),
     });
+
     if (respuesta.ok) {
       redirect("/");
     }
@@ -47,57 +46,62 @@ function Form() {
   return (
     <FieldSet>
       <FieldLegend>Crear Producto</FieldLegend>
-      <FieldDescription>Esto es para crear un producto</FieldDescription>
+      <FieldDescription>
+        Este formulario es para crear un nuevo producto.
+      </FieldDescription>
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="titulo">Titulo</FieldLabel>
           <Input
             value={titulo}
-            id="titulo"
             onChange={(e) => setTitulo(e.target.value)}
+            id="titulo"
             autoComplete="off"
-            placeholder="Producto 1"
+            placeholder="Titulo del producto"
           />
         </Field>
         <Field>
           <FieldLabel htmlFor="descripcion">Descripcion</FieldLabel>
           <Input
-            onChange={(e) => setDescripcion(e.target.value)}
             value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
             id="descripcion"
             autoComplete="off"
+            placeholder="Descripcion del producto"
           />
         </Field>
         <Field>
           <FieldLabel htmlFor="contenido">Contenido</FieldLabel>
           <Input
-            onChange={(e) => setContenido(e.target.value)}
             value={contenido}
+            onChange={(e) => setContenido(e.target.value)}
             id="contenido"
             autoComplete="off"
+            placeholder="Contenido del producto"
           />
         </Field>
         <Field>
           <FieldLabel htmlFor="precio">Precio</FieldLabel>
           <Input
-            onChange={(e) => setPrecio(e.target.value)}
             value={precio}
+            onChange={(e) => setPrecio(e.target.value)}
             id="precio"
-            type="number"
             autoComplete="off"
+            placeholder="Precio del producto"
           />
         </Field>
         <Field>
           <FieldLabel htmlFor="imagen">Imagen</FieldLabel>
           <Input
-            onChange={(e) => setImagen(e.target.value)}
             value={imagen}
+            onChange={(e) => setImagen(e.target.value)}
             id="imagen"
             autoComplete="off"
+            placeholder="Imagen del producto"
           />
         </Field>
       </FieldGroup>
-      <Button onClick={handleSubmit} variant="">
+      <Button onClick={enviarFormulario} variant="default">
         Enviar
       </Button>
     </FieldSet>

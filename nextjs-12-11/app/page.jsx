@@ -11,10 +11,11 @@ async function Pagina() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
-      {productos.map((producto) => {
+      {productos.map((producto, index) => {
         return (
           <CardProducto
-            key={producto.id}
+            key={producto._id}
+            id={producto._id}
             titulo={producto.titulo}
             contenido={producto.contenido}
             descripcion={producto.descripcion}
