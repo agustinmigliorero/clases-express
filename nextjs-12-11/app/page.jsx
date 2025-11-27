@@ -14,7 +14,7 @@ async function Pagina() {
       {productos.map((producto, index) => {
         return (
           <CardProducto
-            key={producto._id}
+            key={index}
             id={producto._id}
             titulo={producto.titulo}
             contenido={producto.contenido}

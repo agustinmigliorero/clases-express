@@ -8,10 +8,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-function CardProducto({
+function DetalleProducto({
   id,
   titulo,
   descripcion,
@@ -20,12 +19,15 @@ function CardProducto({
   urlImagen = "https://t4.ftcdn.net/jpg/06/71/92/37/360_F_671923740_x0zOL3OIuUAnSF6sr7PuznCI5bQFKhI0.jpg",
 }) {
   return (
-    <Card className="p-0">
-      <img src={urlImagen} alt={titulo} className="rounded-lg" />
+    <Card>
       <CardHeader>
+        <img
+          src={urlImagen}
+          alt={titulo}
+          className="rounded-lg object-cover w-full h-96"
+        />
         <CardTitle>{titulo}</CardTitle>
         <CardDescription>{descripcion}</CardDescription>
-        {/* <CardAction>Card Action</CardAction> */}
       </CardHeader>
       <CardContent>
         <p>{contenido}</p>
@@ -36,12 +38,10 @@ function CardProducto({
         </p>
       </CardFooter>
       <CardFooter>
-        <Link className="w-1/1" href={"/productos/" + id}>
-          <Button className="w-1/1">Ver mas</Button>
-        </Link>
+        <Button className="w-1/1">Comprar</Button>
       </CardFooter>
     </Card>
   );
 }
 
-export default CardProducto;
+export default DetalleProducto;
